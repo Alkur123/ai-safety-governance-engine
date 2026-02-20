@@ -28,8 +28,8 @@ We provide multiple ways to deploy and test the engine. Choose the one that fits
 
 | Platform | Type | Version 2.0 | Version 2.5 |
 | :--- | :--- | :--- | :--- |
-| **Hugging Face Spaces** | Interactive Demo | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/jash-ai/divya) | [https://huggingface.co/spaces/jash-ai/global-ai-governance-engine-v25](#) |
-| **AWS** | Enterprise Deployment | [Deploy to AWS (CloudFormation)](http://ai-safety-env.eba-djg2enht.ap-south-1.elasticbeanstalk.com/) | [Insert v2.5 AWS Link Here](#) |
+| **Hugging Face Spaces** | Interactive Demo | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/jash-ai/divya) | [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg)](https://huggingface.co/spaces/jash-ai/global-ai-governance-engine-v25) |
+| **AWS** | Enterprise Deployment | [Deploy to AWS (CloudFormation)](http://ai-safety-env.eba-djg2enht.ap-south-1.elasticbeanstalk.com/) | - |
 | **Docker** | Containerized | `docker pull ai-safety-governance:v2` | `docker pull ai-safety-governance:v2.5` |
 
 ---
@@ -191,3 +191,11 @@ Planned Enhancements:
 - [ ] Expanded multilingual governance support
 - [ ] Large-scale evaluation dataset
 - [ ] Governance robustness benchmarking suite
+
+---
+
+## 📄 Model Documentation
+
+For a detailed breakdown of system architecture, evaluation methodology, limitations, and intended use-cases, please refer to the official [Model Card (v2.5)](MODEL_CARD.md).
+
+
