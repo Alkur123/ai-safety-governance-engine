@@ -181,6 +181,33 @@ The governance engine now demonstrates measurable harm mitigation performance ac
 
 ---
 
+## ⚠ Limitations & System Evolution Analysis
+
+### 🔹 Limitations of v2 (Governance Core)
+v2 established a deterministic rule-based governance pipeline. However, it had several structural limitations:
+1. **No Raw Model Benchmarking**: Could not measure unsafe generation behavior of base models or quantify harm mitigation.
+2. **Classification-Only Evaluation**: Measured classification accuracy but not actual generation safety behavior or leakage.
+3. **Single-Model Focus**: Governance performance assumed consistent; no cross-model validation.
+4. **No Generation Leakage Metric**: Unable to quantify how much unsafe content was truly prevented.
+
+### 🔹 How v2.5 Overcame These Limitations
+v2.5 introduced a research-grade evaluation layer, transitioning the system to a benchmarking framework:
+- ✅ **Raw vs Governed Comparison**: Added dynamic raw model switching for side-by-side behavioral comparison.
+- ✅ **True Generation Leakage Measurement**: Reclassification of raw model outputs and computation of harm reduction.
+- ✅ **Model-Agnostic Benchmarking**: Consistent mitigation behavior validated across GPT-2, DistilGPT-2, and Phi-2.
+- ✅ **Research-Structured Metrics**: Expanded tracking to include Raw Unsafe Rate and Governed Block Rate.
+
+### ⚠ Remaining Limitations in v2.5
+Despite improvements, v2.5 still has important limitations:
+1. **Rule-Based Output Reclassification**: Deterministic rules may overestimate unsafe outputs or miss subtle procedural instructions.
+2. **No Behavioral Granularity**: Does not distinguish between explicit instructions, partial compliance, or refusals.
+3. **Limited Dataset Size**: Evaluation set (≈60 prompts) is not statistically representative of real-world adversarial diversity.
+4. **No Adversarial Paraphrasing Stress Tests**: Lacks testing for prompt obfuscation, jailbreak patterns, and contextual attacks.
+5. **No Multilingual Benchmarking**: Evaluated primarily on English prompts.
+6. **Harm Reduction Definition**: The current metric (`raw_unsafe_rate - governed_block_rate`) reflects blocking efficiency but lacks severity weighting or risk magnitude scoring.
+
+---
+
 ## 🛣 Roadmap — v3
 
 Planned Enhancements:
@@ -192,10 +219,15 @@ Planned Enhancements:
 - [ ] Large-scale evaluation dataset
 - [ ] Governance robustness benchmarking suite
 
+### 📌 Summary
+* **v2** → Deterministic governance engine  
+* **v2.5** → Model-agnostic benchmarking framework  
+* **v3** → Robust adversarial safety evaluation platform
+
+*The system is evolving from rule-based moderation into measurable governance infrastructure.*
+
 ---
 
 ## 📄 Model Documentation
 
 For a detailed breakdown of system architecture, evaluation methodology, limitations, and intended use-cases, please refer to the official [Model Card (v2.5)](MODEL_CARD.md).
-
-
