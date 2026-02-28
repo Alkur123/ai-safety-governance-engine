@@ -91,8 +91,24 @@ Unlike standard stateless moderation systems that evaluate prompts independently
 
 Our engine processes traffic with final authority over the LLM. 
 
-```text
-User → PHI Redaction → Harm & Attack Detection → Intent Detection → Session Memory (S2.5) → Policy Engine → BLOCK / ABSTAIN / SUPPORT MODE / ALLOW → Generation → Verification → Explainability + Metric
+```mermaid
+graph TD
+    User([User Query]) --> PHI[PHI Redaction]
+    PHI --> Harm[Harm & Attack Detection]
+    Harm --> Intent[Intent Detection]
+    Intent --> Session[Session Memory S2.5]
+    Session --> Policy[Policy Engine]
+    
+    Policy -- Violation --> BLOCK
+    Policy -- High Uncertainty --> ABSTAIN
+    Policy -- Emotional Distress --> SUPPORT[SUPPORT MODE]
+    Policy -- Safe --> Allow[Safe Generation]
+    
+    Allow --> Verify[Verification]
+    BLOCK --> Explain[Explainability + Metrics]
+    ABSTAIN --> Explain
+    SUPPORT --> Explain
+    Verify --> Explain
 ```
 
 **Key Design Principle:** *The LLM is treated as an untrusted component. Governance logic possesses final authority.*
@@ -191,4 +207,5 @@ Planned Enhancements:
 ## 📄 Model Documentation
 
 For a detailed breakdown of system architecture, evaluation methodology, limitations, and intended use-cases, please refer to the official [Model Card (v2.5)](MODEL_CARD.md).
+
 
